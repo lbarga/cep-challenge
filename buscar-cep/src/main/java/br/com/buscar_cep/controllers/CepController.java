@@ -1,7 +1,7 @@
-package br.com.cep.controllers;
+package br.com.buscar_cep.controllers;
 
-import br.com.cep.models.CepDTO;
-import br.com.cep.services.CepService;
+import br.com.buscar_cep.models.CepDTO;
+import br.com.buscar_cep.services.CepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

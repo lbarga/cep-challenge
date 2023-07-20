@@ -1,4 +1,4 @@
-package br.com.cep.services;
+package br.com.buscar_cep.services;
 
 import org.springframework.stereotype.Service;
 

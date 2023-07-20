@@ -1,4 +1,4 @@
-package br.com.cep.models;
+package br.com.buscar_cep.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

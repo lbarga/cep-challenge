@@ -1,10 +1,11 @@
-package br.com.cep.services;
+package br.com.buscar_cep.services;
 
-import br.com.cep.models.ApiCepDTO;
-import br.com.cep.models.BrasilApiDTO;
-import br.com.cep.models.CepDTO;
-import br.com.cep.models.ViaCepDTO;
-import br.com.cep.utils.CepUtils;
+import br.com.buscar_cep.constants.Strings;
+import br.com.buscar_cep.models.ApiCepDTO;
+import br.com.buscar_cep.models.BrasilApiDTO;
+import br.com.buscar_cep.models.CepDTO;
+import br.com.buscar_cep.models.ViaCepDTO;
+import br.com.buscar_cep.utils.CepUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,10 @@ public class CepService {
 
     @Autowired
     private AsyncService asyncService;
-
     @Autowired
     private CepUtils cepUtils;
+    @Autowired
+    private Strings strings;
 
     public CepDTO getCepInMultiplesApis(String strCep) throws IOException {
         String apiCepUrl = "https://cdn.apicep.com/file/apicep/" + cepUtils.formatCep(strCep) + ".json";
@@ -52,7 +54,7 @@ public class CepService {
                         cepDTO.setBairro(apiCepDTO.getDistrict());
                         cepDTO.setCidade(apiCepDTO.getCity());
                         cepDTO.setEstado(apiCepDTO.getState());
-                        cepDTO.setPais("Brasil");
+                        cepDTO.setPais(strings.BRAZIL);
 
                         return;
                     } catch (Exception e) {
@@ -71,7 +73,7 @@ public class CepService {
                         cepDTO.setBairro(viaCepDTO.getBairro());
                         cepDTO.setCidade(viaCepDTO.getLocalidade());
                         cepDTO.setEstado(viaCepDTO.getUf());
-                        cepDTO.setPais("Brasil");
+                        cepDTO.setPais(strings.BRAZIL);
                         cepDTO.setCodigoIBGECidade(viaCepDTO.getIbge());
                         cepDTO.setCodigoIBGEEstado(viaCepDTO.getIbge());
 
@@ -87,7 +89,7 @@ public class CepService {
 
                         BrasilApiDTO brasilApiDTO = objectMapper.readValue(brasilApiResponse, BrasilApiDTO.class);
 
-                        cepDTO.setPais("Brasil");
+                        cepDTO.setPais(strings.BRAZIL);
                         cepDTO.setCep(cepUtils.formatCep(brasilApiDTO.getCep()));
                         cepDTO.setLogradouro(brasilApiDTO.getStreet());
                         cepDTO.setBairro(brasilApiDTO.getNeighborhood());
