@@ -1,8 +1,8 @@
-package br.com.cep.entity;
+package br.com.cep.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ApiCep {
+public class ApiCepDTO {
     @JsonProperty("code")
     private String code;
 
