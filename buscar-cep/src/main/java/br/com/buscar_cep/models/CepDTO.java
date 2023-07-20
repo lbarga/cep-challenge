@@ -1,5 +1,7 @@
 package br.com.buscar_cep.models;
 
+import java.util.Objects;
+
 public class CepDTO {
     private String cep;
     private String logradouro;
@@ -75,5 +77,18 @@ public class CepDTO {
 
     public void setCodigoIBGEEstado(String codigoIBGEEstado) {
         this.codigoIBGEEstado = codigoIBGEEstado;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CepDTO cepDTO = (CepDTO) o;
+        return Objects.equals(cep, cepDTO.cep) && Objects.equals(logradouro, cepDTO.logradouro) && Objects.equals(bairro, cepDTO.bairro) && Objects.equals(cidade, cepDTO.cidade) && Objects.equals(estado, cepDTO.estado) && Objects.equals(pais, cepDTO.pais) && Objects.equals(codigoIBGECidade, cepDTO.codigoIBGECidade) && Objects.equals(codigoIBGEEstado, cepDTO.codigoIBGEEstado);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cep, logradouro, bairro, cidade, estado, pais, codigoIBGECidade, codigoIBGEEstado);
     }
 }
