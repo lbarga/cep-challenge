@@ -18,8 +18,8 @@ public class CepController {
     CepService cepService;
 
     @GetMapping(value = "/{cep}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public CepDTO getCep(@PathVariable(value = "cep") String strCep) throws IOException {
-        return cepService.getCepInMultiplesApis(strCep);
+    public CepDTO getCep(@PathVariable(value = "cep") String cep) throws IOException {
+        return cepService.getCepInMultiplesApis(cep);
     }
 }
 
